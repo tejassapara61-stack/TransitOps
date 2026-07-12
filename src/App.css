@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════
+   Tailwind v4 — @theme: map CSS vars → utilities
+   bg-themeBg, bg-themeSurface, text-themeText, text-themeAccent
+   ════════════════════════════════════════════════ */
+@theme {
+  --color-themeBg:      var(--bg-main);
+  --color-themeSurface: var(--bg-surface);
+  --color-themeText:    var(--text-primary);
+  --color-themeSecondary: var(--text-secondary);
+  --color-themeAccent:  var(--accent-glow);
+}
+
+/* ── Smooth 500ms transitions on theme/mode change ── */
+html[data-theme] *,
+html[data-theme] *::before,
+html[data-theme] *::after {
+  transition-property: background-color, border-color, color, box-shadow, fill, stroke, outline-color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Keep interactive elements snappy */
+html[data-theme] button,
+html[data-theme] a,
+html[data-theme] input,
+html[data-theme] select,
+html[data-theme] textarea {
+  transition-duration: 150ms;
+}

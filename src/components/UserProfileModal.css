@@ -1,0 +1,381 @@
+/* ================================================
+   CoreNexa — User Profile Modal / Slide-Over
+   ================================================ */
+
+/* ── Backdrop ── */
+.upm__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: flex-end;
+    animation: upm-backdrop-in 0.2s ease-out;
+}
+
+@keyframes upm-backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ── Slide-Over Panel ── */
+.upm__panel {
+    width: 400px;
+    max-width: 92vw;
+    height: 100vh;
+    overflow-y: auto;
+    background: #fff;
+    box-shadow: -12px 0 40px rgba(15, 23, 42, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 1.65rem 1.5rem;
+    position: relative;
+    animation: upm-slide-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes upm-slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ── Close Button ── */
+.upm__close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    transition: all var(--transition-fast);
+    z-index: 2;
+}
+
+.upm__close:hover {
+    background: var(--color-bg-off);
+    color: var(--color-heading);
+}
+
+/* ── Header ── */
+.upm__header {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.upm__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+}
+
+.upm__header-info {
+    min-width: 0;
+}
+
+.upm__name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.upm__email {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin: 0.15rem 0 0;
+    word-break: break-all;
+}
+
+/* ── Status Badges ── */
+.upm__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.15rem;
+}
+
+.upm__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.28rem 0.7rem;
+    border-radius: var(--radius-full);
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+/* ── Divider ── */
+.upm__divider {
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 1.25rem;
+}
+
+/* ── Sections ── */
+.upm__section {
+    margin-bottom: 1.35rem;
+}
+
+.upm__section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-muted);
+    margin: 0 0 0.75rem;
+}
+
+/* ── Progress Bar ── */
+.upm__progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.upm__progress-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-body);
+}
+
+.upm__progress-pct {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--color-heading);
+}
+
+.upm__progress-track {
+    width: 100%;
+    height: 8px;
+    background: #F1F5F9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.upm__progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.upm__progress-fill--done {
+    background: linear-gradient(90deg, #22C55E, #16A34A);
+}
+
+.upm__progress-complete {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #16A34A;
+}
+
+/* ── Read-Only Fields ── */
+.upm__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+}
+
+.upm__field {
+    background: var(--color-bg-off);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 0.85rem;
+}
+
+.upm__field--full {
+    grid-column: 1 / -1;
+}
+
+.upm__field-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    margin-bottom: 0.2rem;
+}
+
+.upm__field-value {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: 0.01em;
+}
+
+/* ── Quick Actions ── */
+.upm__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.upm__action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.72rem 1rem;
+    background: var(--color-bg-off);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.84rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    color: var(--color-heading);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.upm__action-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    transform: translateX(2px);
+}
+
+.upm__action-btn svg {
+    flex-shrink: 0;
+    color: var(--color-muted);
+    transition: color var(--transition-fast);
+}
+
+.upm__action-btn:hover svg {
+    color: var(--color-primary);
+}
+
+/* Primary action (Edit Profile) */
+.upm__action-btn--primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.upm__action-btn--primary svg {
+    color: #fff;
+}
+
+.upm__action-btn--primary:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+    transform: translateY(-1px);
+}
+
+.upm__action-btn--primary:hover svg {
+    color: #fff;
+}
+
+/* ── Footer: Sign Out ── */
+.upm__footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.upm__signout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: 1.5px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: var(--font-family);
+    color: #0F172A;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.upm__signout-btn:hover {
+    background: #FEF2F2;
+    border-color: #FECACA;
+    color: #DC2626;
+}
+
+.upm__signout-btn svg {
+    transition: color var(--transition-fast);
+}
+
+.upm__signout-btn:hover svg {
+    color: #DC2626;
+}
+
+/* ── Scrollbar ── */
+.upm__panel::-webkit-scrollbar {
+    width: 5px;
+}
+
+.upm__panel::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 3px;
+}
+
+.upm__panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+    .upm__panel {
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+    }
+
+    .upm__avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 1rem;
+    }
+
+    .upm__name {
+        font-size: 1.1rem;
+    }
+}

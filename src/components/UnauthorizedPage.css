@@ -1,0 +1,105 @@
+/* ================================================
+   CoreNexa — Unauthorized / Access Denied
+   ================================================ */
+
+.unauth {
+    min-height: 100vh;
+    background: var(--color-bg, #F8FAFC);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: var(--font-family, 'Inter', system-ui, sans-serif);
+}
+
+.unauth__card {
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    background: var(--color-bg-white, #fff);
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: var(--radius-xl, 16px);
+    padding: 3rem 2.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Icon ── */
+.unauth__icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FEF2F2;
+    color: #DC2626;
+    border-radius: 50%;
+}
+
+/* ── Title ── */
+.unauth__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-heading, #0F172A);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.65rem;
+}
+
+/* ── Message ── */
+.unauth__message {
+    font-size: 0.88rem;
+    color: var(--color-muted, #64748B);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Role + Dept badges ── */
+.unauth__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-bottom: 2rem;
+}
+
+.unauth__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 100px;
+    background: #EEF2FF;
+    color: #4338CA;
+    border: 1px solid #C7D2FE;
+}
+
+.unauth__badge--dept {
+    background: #F0FDF4;
+    color: #16A34A;
+    border-color: #BBF7D0;
+}
+
+/* ── Button ── */
+.unauth__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.78rem 1.75rem;
+    background: var(--color-primary, #4F46E5);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md, 10px);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.unauth__btn:hover {
+    background: var(--color-primary-hover, #4338CA);
+    box-shadow: 0 4px 18px rgba(79, 70, 229, 0.35);
+    transform: translateY(-1px);
+}
