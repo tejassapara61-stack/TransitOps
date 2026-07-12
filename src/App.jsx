@@ -7,6 +7,7 @@ import ProfilePage from './components/ProfilePage';
 import UnauthorizedPage from './components/UnauthorizedPage';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import FleetAgentBot from './components/FleetAgentBot';
 import './App.css';
 
 export default function App() {
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/dashboard" element={<Navigate to="/dashboard/profile" replace />} />
             <Route path="/dashboard/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           </Routes>
+          <FleetAgentBot />
         </AuthProvider>
       </ThemeProvider>
     </Router>
