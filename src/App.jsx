@@ -9,6 +9,8 @@ import UnauthorizedPage from './components/UnauthorizedPage';
 import DashboardLayout from './components/DashboardLayout';
 import DriverManagement from './components/DriverManagement';
 import VehicleRegistry from './components/VehicleRegistry';
+import ExpensesAndAnalytics from './components/ExpensesAndAnalytics';
+import TripManagement from './components/TripManagement';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
@@ -77,6 +79,26 @@ export default function App() {
                 <ProtectedRoute>
                   <DashboardLayout breadcrumb="Vehicle Fleet Registry">
                     <VehicleRegistry />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/analytics"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout breadcrumb="Expenses & Analytics">
+                    <ExpensesAndAnalytics />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/trips"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout breadcrumb="Trip Ledger">
+                    <TripManagement />
                   </DashboardLayout>
                 </ProtectedRoute>
               }

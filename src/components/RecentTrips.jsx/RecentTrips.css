@@ -1,48 +1,73 @@
-.recent-trips{
-    width:100%;
+.recent-trips {
+  width: 100%;
 }
 
-.table-header{
-    margin-bottom:18px;
+.table-header {
+  margin-bottom: 24px;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+.table-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dash-text-main, #f8fafc);
 }
 
-th{
-    text-align:left;
-    padding:14px;
-    color:#666;
-    border-bottom:1px solid #eee;
+.recent-trips table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-td{
-    padding:16px 14px;
-    border-bottom:1px solid #f2f2f2;
+.recent-trips th {
+  text-align: left;
+  padding: 16px;
+  color: var(--dash-text-muted, #94a3b8);
+  border-bottom: 1px solid var(--dash-border, rgba(255, 255, 255, 0.08));
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
 }
 
-.status{
-    padding:6px 14px;
-    border-radius:20px;
-    color:white;
-    font-size:13px;
-    font-weight:600;
+.recent-trips td {
+  padding: 16px;
+  border-bottom: 1px solid var(--dash-border, rgba(255, 255, 255, 0.08));
+  color: var(--dash-text-main, #f8fafc);
+  font-size: 14px;
 }
 
-.running{
-    background:#3B82F6;
+.recent-trips tr:last-child td {
+  border-bottom: none;
 }
 
-.completed{
-    background:#22C55E;
+.recent-trips tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.scheduled{
-    background:#F59E0B;
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
 }
 
-.maintenance{
-    background:#EF4444;
+.running {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+.completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.scheduled {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.maintenance {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
 }

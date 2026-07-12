@@ -27,6 +27,9 @@ export default function FleetChart() {
     plugins: {
       legend: {
         position: "bottom",
+        labels: {
+          color: "#f8fafc",
+        },
       },
     },
   };
