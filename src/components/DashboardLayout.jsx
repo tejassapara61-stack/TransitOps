@@ -6,6 +6,24 @@ import './DashboardLayout.css';
 
 const navItems = [
     {
+        label: 'Driver Management',
+        path: '/dashboard/drivers',
+        icon: (
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5V4H2v16h5m10 0v-2a3 3 0 00-3-3H10a3 3 0 00-3 3v2m10 0H7m10-10a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        ),
+    },
+    {
+        label: 'Vehicle Registry',
+        path: '/dashboard/vehicles',
+        icon: (
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+        ),
+    },
+    {
         label: 'Profile',
         path: '/dashboard/profile',
         icon: (
@@ -35,7 +53,7 @@ export default function DashboardLayout({ children, breadcrumb }) {
                 <div className="dash__sidebar-top">
                     <Link to="/" className="dash__logo">
                         <span className="dash__logo-icon">⬡</span>
-                        {!sidebarCollapsed && <span className="dash__logo-text">Boilerplate</span>}
+                        {!sidebarCollapsed && <span className="dash__logo-text">TransitOps</span>}
                     </Link>
 
                     <button

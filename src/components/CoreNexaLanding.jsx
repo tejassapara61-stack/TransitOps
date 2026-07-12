@@ -33,7 +33,7 @@ function Section({ children, className = '', id = '' }) {
 
 
 /* ─────────────── HERO ─────────────── */
-function HeroSection() {
+function HeroSection({ onOpenDemo }) {
   return (
     <section className="cnx-hero">
       {/* Background effects */}
@@ -80,10 +80,85 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
         >
+          <button className="cnx-btn cnx-btn--primary cnx-btn--glow" onClick={onOpenDemo}>
+            <Truck size={18} />
+            Request a Live Demo
+            <ArrowRight size={18} />
+          </button>
           <button className="cnx-btn cnx-btn--ghost">
             <Play size={18} />
             Watch Platform Tour
           </button>
+        </motion.div>
+
+        {/* Floating Dashboard Mockup */}
+        <motion.div
+          className="cnx-hero__mockup"
+          initial={{ opacity: 0, y: 60, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 1.0, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.div
+            className="cnx-hero__mockup-float"
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <div className="cnx-hero__mockup-glass">
+              <div className="cnx-hero__mockup-topbar">
+                <div className="cnx-hero__mockup-dots">
+                  <span style={{ background: '#EF4444' }} />
+                  <span style={{ background: '#F59E0B' }} />
+                  <span style={{ background: '#22C55E' }} />
+                </div>
+                <div className="cnx-hero__mockup-url">app.transitops.io/dispatch</div>
+              </div>
+              <div className="cnx-hero__mockup-body">
+                <div className="cnx-hero__mockup-sidebar">
+                  {['Dashboard', 'Fleet', 'Dispatch', 'Maintenance', 'Finance'].map((item, i) => (
+                    <div key={item} className={`cnx-hero__mockup-nav-item ${i === 0 ? 'active' : ''}`}>
+                      <div className="cnx-hero__mockup-nav-dot" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="cnx-hero__mockup-main">
+                  <div className="cnx-hero__mockup-kpis">
+                    {[
+                      { label: 'Vehicles Active', value: '34', color: '#22C55E' },
+                      { label: 'Trips Today', value: '127', color: '#4F46E5' },
+                      { label: 'Fleet Utilization', value: '91%', color: '#06B6D4' },
+                    ].map((kpi) => (
+                      <div key={kpi.label} className="cnx-hero__mockup-kpi">
+                        <div className="cnx-hero__mockup-kpi-value" style={{ color: kpi.color }}>{kpi.value}</div>
+                        <div className="cnx-hero__mockup-kpi-label">{kpi.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="cnx-hero__mockup-chart">
+                    <svg viewBox="0 0 300 60" preserveAspectRatio="none" className="cnx-hero__mockup-chart-svg">
+                      <defs>
+                        <linearGradient id="heroChartGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.3" />
+                          <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,50 C30,45 50,30 80,28 C110,26 130,35 160,20 C190,5 220,15 250,10 C280,5 300,8 300,5 L300,60 L0,60Z" fill="url(#heroChartGrad)" />
+                      <path d="M0,50 C30,45 50,30 80,28 C110,26 130,35 160,20 C190,5 220,15 250,10 C280,5 300,8 300,5" stroke="#4F46E5" strokeWidth="2" fill="none" />
+                    </svg>
+                  </div>
+                  <div className="cnx-hero__mockup-rows">
+                    {[0.85, 0.72, 0.65].map((w, i) => (
+                      <div key={i} className="cnx-hero__mockup-row">
+                        <div className="cnx-hero__mockup-row-avatar" />
+                        <div className="cnx-hero__mockup-row-bar" style={{ width: `${w * 100}%` }} />
+                        <div className="cnx-hero__mockup-row-score">{Math.round(w * 100)}%</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -444,6 +519,7 @@ function DemoSchedulerSection({ onOpenDemo }) {
   return (
     <Section className="cnx-demo" id="demo">
       <div className="cnx-demo__header">
+        <span className="cnx-pill">Book a Demo</span>
         <h2 className="cnx-section-title">
           See TransitOps in <span className="cnx-hero__gradient-text">action.</span>
         </h2>
@@ -743,7 +819,7 @@ export default function CoreNexaLanding() {
   return (
     <div className="cnx-landing">
       <Navbar onOpenDemo={handleCTA} />
-      <HeroSection />
+      <HeroSection onOpenDemo={handleCTA} />
       <TechStackSection />
       <FeaturesSection />
       <PersonasSection />

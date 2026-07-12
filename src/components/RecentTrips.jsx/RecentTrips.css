@@ -1,0 +1,48 @@
+.recent-trips{
+    width:100%;
+}
+
+.table-header{
+    margin-bottom:18px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    text-align:left;
+    padding:14px;
+    color:#666;
+    border-bottom:1px solid #eee;
+}
+
+td{
+    padding:16px 14px;
+    border-bottom:1px solid #f2f2f2;
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    color:white;
+    font-size:13px;
+    font-weight:600;
+}
+
+.running{
+    background:#3B82F6;
+}
+
+.completed{
+    background:#22C55E;
+}
+
+.scheduled{
+    background:#F59E0B;
+}
+
+.maintenance{
+    background:#EF4444;
+}

@@ -1,0 +1,482 @@
+/* ================================================
+   DriverFleetControl.css — Main Table & Card Styles
+   ================================================ */
+
+/* ── Loading State ── */
+.dfc-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  min-height: 400px;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.dfc-loading__spinner {
+  color: #3b82f6;
+  margin-bottom: 1rem;
+  animation: dfc-spin 1s linear infinite;
+}
+
+@keyframes dfc-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.dfc-loading__text {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* ── Error State ── */
+.dfc-error-state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: rgba(127, 29, 29, 0.2);
+  color: #f87171;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ── Main Card Container ── */
+.dfc {
+  position: relative;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #e2e8f0;
+}
+
+/* ── Top Glow Line ── */
+.dfc__glow-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.45) 50%, transparent 100%);
+  z-index: 1;
+}
+
+/* ── Header ── */
+.dfc__header {
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.dfc__header-text {
+  min-width: 0;
+}
+
+.dfc__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.dfc__title-icon {
+  padding: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 10px;
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dfc__subtitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 6px 0 0;
+  font-weight: 500;
+}
+
+/* ── Add Button ── */
+.dfc__add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #2563eb;
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.35);
+  transition: all 200ms ease;
+  flex-shrink: 0;
+}
+
+.dfc__add-btn:hover {
+  background: #3b82f6;
+  box-shadow: 0 0 28px rgba(37, 99, 235, 0.5);
+}
+
+/* ── Table Wrapper ── */
+.dfc__table-wrap {
+  overflow-x: auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom scrollbar */
+.dfc__table-wrap::-webkit-scrollbar {
+  height: 6px;
+}
+.dfc__table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dfc__table-wrap::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 10px;
+}
+
+/* ── Table ── */
+.dfc__table {
+  width: 100%;
+  text-align: left;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+
+/* ── Table Head ── */
+.dfc__thead {
+  background: rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 20;
+}
+
+.dfc__th {
+  padding: 14px 28px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dfc__th--right {
+  text-align: right;
+}
+
+/* ── Table Body ── */
+.dfc__tbody tr + tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+/* ── Table Rows ── */
+.dfc__row {
+  transition: all 200ms ease;
+}
+
+.dfc__row:hover {
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dfc__row--expired {
+  background: rgba(127, 29, 29, 0.06);
+}
+
+/* ── Table Cells ── */
+.dfc__td {
+  padding: 18px 28px;
+  color: #cbd5e1;
+  vertical-align: middle;
+}
+
+.dfc__td--name {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.dfc__row:hover .dfc__td--name {
+  color: #fff;
+}
+
+.dfc__td--mono {
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.dfc__td--right {
+  text-align: right;
+}
+
+/* ── Category Tag ── */
+.dfc__category-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+  color: #94a3b8;
+}
+
+/* ── Expiry ── */
+.dfc__expiry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.dfc__expiry--expired {
+  color: #f87171;
+}
+
+.dfc__expiry-icon {
+  color: #ef4444;
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+}
+
+/* ── Safety Score ── */
+.dfc__safety {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dfc__safety-score {
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 26px;
+}
+
+.dfc__safety-score--high { color: #34d399; }
+.dfc__safety-score--mid  { color: #fbbf24; }
+.dfc__safety-score--low  { color: #f87171; }
+
+.dfc__safety-track {
+  width: 80px;
+  height: 6px;
+  background: #1e293b;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dfc__safety-fill {
+  height: 100%;
+  border-radius: 100px;
+}
+
+.dfc__safety-fill--high {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+}
+
+.dfc__safety-fill--mid {
+  background: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+.dfc__safety-fill--low {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+}
+
+/* ── Status Badges ── */
+.dfc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.dfc-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Available */
+.dfc-badge--available {
+  background: rgba(6, 78, 59, 0.35);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
+}
+.dfc-badge__dot--available {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}
+
+/* On Trip */
+.dfc-badge--trip {
+  background: rgba(23, 37, 84, 0.4);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+}
+.dfc-badge__dot--trip {
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+  animation: dfc-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dfc-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* Off Duty */
+.dfc-badge--off {
+  background: rgba(30, 41, 59, 0.5);
+  color: #94a3b8;
+  border-color: rgba(100, 116, 139, 0.35);
+}
+.dfc-badge__dot--off {
+  background: #64748b;
+}
+
+/* Suspended */
+.dfc-badge--suspended {
+  background: rgba(127, 29, 29, 0.3);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.15);
+}
+.dfc-badge__dot--suspended {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+}
+
+/* ── Edit Button ── */
+.dfc__edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #94a3b8;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.dfc__edit-btn:hover {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+/* ── Empty State ── */
+.dfc__empty-cell {
+  padding: 64px 28px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.dfc__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dfc__empty-icon {
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.dfc__empty-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.dfc__empty-link {
+  margin-top: 12px;
+  color: #60a5fa;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: color 200ms ease;
+}
+
+.dfc__empty-link:hover {
+  color: #93c5fd;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dfc__header {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dfc__add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dfc__th,
+  .dfc__td {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

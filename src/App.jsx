@@ -1,13 +1,16 @@
+import Dashboard from './Dashboard';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CoreNexaLanding from './components/CoreNexaLanding';
 import AuthPage from './components/AuthPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfilePage from './components/ProfilePage';
 import UnauthorizedPage from './components/UnauthorizedPage';
+import DashboardLayout from './components/DashboardLayout';
+import DriverManagement from './components/DriverManagement';
+import VehicleRegistry from './components/VehicleRegistry';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
-import FleetAgentBot from './components/FleetAgentBot';
 import './App.css';
 
 export default function App() {
@@ -50,10 +53,36 @@ export default function App() {
             <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
             {/* ── Protected routes ── */}
-            <Route path="/dashboard" element={<Navigate to="/dashboard/profile" replace />} />
+            <Route
+              path="/dashboard/*"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/drivers"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout breadcrumb="Driver Management">
+                    <DriverManagement />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/vehicles"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout breadcrumb="Vehicle Fleet Registry">
+                    <VehicleRegistry />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
             <Route path="/dashboard/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           </Routes>
-          <FleetAgentBot />
         </AuthProvider>
       </ThemeProvider>
     </Router>

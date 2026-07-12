@@ -45,8 +45,6 @@ export default function ProfilePage() {
     const [department, setDepartment] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [linkedinUrl, setLinkedinUrl] = useState('');
-    const [portfolioUrl, setPortfolioUrl] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
     const [userId, setUserId] = useState('');
     const [dateJoined, setDateJoined] = useState('');
@@ -92,8 +90,6 @@ export default function ProfilePage() {
                     setDepartment(d.department || '');
                     setEmail(d.email || user.email || '');
                     setPhone(d.phone || '');
-                    setLinkedinUrl(d.linkedinUrl || '');
-                    setPortfolioUrl(d.portfolioUrl || '');
                     setAvatarUrl(d.avatarUrl || '');
                     setUserId(d.shortId || genHexId());
                     setDateJoined(formatDate(d.createdAt));
@@ -172,8 +168,6 @@ export default function ProfilePage() {
                 jobTitle: jobTitle.trim(),
                 department,
                 phone: phone.trim(),
-                linkedinUrl: linkedinUrl.trim(),
-                portfolioUrl: portfolioUrl.trim(),
                 avatarUrl,
                 shortId: userId,
             });
@@ -439,40 +433,6 @@ export default function ProfilePage() {
                                 </div>
                             </div>
 
-                            <div className="pf__divider" />
-
-                            <div className="pf__field">
-                                <label className="pf__label" htmlFor="pf-linkedin">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2" style={{ verticalAlign: '-2px', marginRight: '0.35rem' }}><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z" /></svg>
-                                    LinkedIn Profile URL
-                                </label>
-                                <div className="pf__input-icon-wrap">
-                                    <svg className="pf__input-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-                                    <input
-                                        id="pf-linkedin"
-                                        type="url"
-                                        className="pf__input pf__input--icon"
-                                        value={linkedinUrl}
-                                        onChange={(e) => setLinkedinUrl(e.target.value)}
-                                        placeholder="https://linkedin.com/in/your-profile"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="pf__field">
-                                <label className="pf__label" htmlFor="pf-portfolio">Portfolio / Website URL</label>
-                                <div className="pf__input-icon-wrap">
-                                    <svg className="pf__input-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                                    <input
-                                        id="pf-portfolio"
-                                        type="url"
-                                        className="pf__input pf__input--icon"
-                                        value={portfolioUrl}
-                                        onChange={(e) => setPortfolioUrl(e.target.value)}
-                                        placeholder="e.g. tejas97automation.netlify.app"
-                                    />
-                                </div>
-                            </div>
                         </div>
 
                         {/* ── Save ── */}
